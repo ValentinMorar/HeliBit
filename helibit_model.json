@@ -1,0 +1,525 @@
+{
+  "token_states": {
+    "action:heat_on": {
+      "mass": 6.999999999999983,
+      "pitch": 3.603563171173768,
+      "velocity": 0.11381137224801983,
+      "activation_count": 120
+    },
+    "action:cool_on": {
+      "mass": 5.4999999999999885,
+      "pitch": 2.048815476440142,
+      "velocity": 0.5191148135943445,
+      "activation_count": 90
+    },
+    "action:heat_off": {
+      "mass": 3.2499999999999964,
+      "pitch": 3.86678455248785,
+      "velocity": -1.456073805554608,
+      "activation_count": 45
+    },
+    "state:cooling": {
+      "mass": 2.499999999999999,
+      "pitch": 5.928891583210332,
+      "velocity": -0.26625693261506267,
+      "activation_count": 30
+    },
+    "action:cool_off": {
+      "mass": 8.499999999999986,
+      "pitch": 2.820366504993555,
+      "velocity": -0.5129322656492655,
+      "activation_count": 150
+    },
+    "the": {
+      "mass": 48.249999999999396,
+      "pitch": 1.1227994287680854,
+      "velocity": -0.08757860617827748,
+      "activation_count": 945
+    },
+    "room": {
+      "mass": 21.250000000000167,
+      "pitch": 1.6067231077934623,
+      "velocity": 0.09162687914619061,
+      "activation_count": 405
+    },
+    "is": {
+      "mass": 34.000000000000206,
+      "pitch": 1.1864433867610527,
+      "velocity": 0.038269205939671994,
+      "activation_count": 660
+    },
+    "cold": {
+      "mass": 8.499999999999986,
+      "pitch": 1.4934184776993655,
+      "velocity": 0.2431830384283796,
+      "activation_count": 150
+    },
+    "feels": {
+      "mass": 3.999999999999994,
+      "pitch": 1.7054499969774664,
+      "velocity": -0.2605590524774856,
+      "activation_count": 60
+    },
+    "it": {
+      "mass": 5.4999999999999885,
+      "pitch": 1.7155201259622623,
+      "velocity": -0.4987347758462047,
+      "activation_count": 90
+    },
+    "inside": {
+      "mass": 3.2499999999999964,
+      "pitch": 3.862741364866922,
+      "velocity": 0.23180316713065888,
+      "activation_count": 45
+    },
+    "temperature": {
+      "mass": 9.249999999999996,
+      "pitch": 3.0467804632078908,
+      "velocity": 0.5298925117676656,
+      "activation_count": 165
+    },
+    "low": {
+      "mass": 5.4999999999999885,
+      "pitch": 1.3863891834449928,
+      "velocity": -0.2479609691688389,
+      "activation_count": 90
+    },
+    "indoor": {
+      "mass": 3.2499999999999964,
+      "pitch": 4.805614368839173,
+      "velocity": 0.20613837113291184,
+      "activation_count": 45
+    },
+    "too": {
+      "mass": 10.000000000000007,
+      "pitch": 2.159211360822941,
+      "velocity": 0.0700243543869587,
+      "activation_count": 180
+    },
+    "needs": {
+      "mass": 3.999999999999994,
+      "pitch": 2.4687618390902912,
+      "velocity": -0.4832957939893108,
+      "activation_count": 60
+    },
+    "heating": {
+      "mass": 10.000000000000007,
+      "pitch": 3.2874270150364837,
+      "velocity": 0.5945198720000515,
+      "activation_count": 180
+    },
+    "turn": {
+      "mass": 7.7499999999999805,
+      "pitch": 1.2001533988794613,
+      "velocity": 0.14956152237039447,
+      "activation_count": 135
+    },
+    "heater": {
+      "mass": 3.999999999999994,
+      "pitch": 2.6267627112356355,
+      "velocity": -0.6205785594360209,
+      "activation_count": 60
+    },
+    "on": {
+      "mass": 3.2499999999999964,
+      "pitch": 2.424972741255304,
+      "velocity": 0.05800204197959799,
+      "activation_count": 45
+    },
+    "start": {
+      "mass": 3.2499999999999964,
+      "pitch": 3.8542107766293787,
+      "velocity": 0.15460377834968422,
+      "activation_count": 45
+    },
+    "make": {
+      "mass": 3.2499999999999964,
+      "pitch": 1.0,
+      "velocity": 0.0,
+      "activation_count": 45
+    },
+    "cooler": {
+      "mass": 3.2499999999999964,
+      "pitch": 3.849945482510607,
+      "velocity": 0.11600408395919658,
+      "activation_count": 45
+    },
+    "cool": {
+      "mass": 6.249999999999986,
+      "pitch": 1.1928838981369716,
+      "velocity": -0.139309499237269,
+      "activation_count": 105
+    },
+    "house": {
+      "mass": 3.999999999999994,
+      "pitch": 1.489587279696764,
+      "velocity": -0.16109859799643675,
+      "activation_count": 60
+    },
+    "getting": {
+      "mass": 3.999999999999994,
+      "pitch": 1.489587279696764,
+      "velocity": -0.16109859799643675,
+      "activation_count": 60
+    },
+    "hot": {
+      "mass": 3.2499999999999964,
+      "pitch": 3.3806416275838687,
+      "velocity": 0.14813632915331354,
+      "activation_count": 45
+    },
+    "increased": {
+      "mass": 3.999999999999994,
+      "pitch": 2.7847635833809825,
+      "velocity": -0.7578613248827321,
+      "activation_count": 60
+    },
+    "much": {
+      "mass": 3.2499999999999964,
+      "pitch": 2.9070724785383573,
+      "velocity": 0.14166887995694324,
+      "activation_count": 45
+    },
+    "very": {
+      "mass": 3.999999999999994,
+      "pitch": 1.9791745593935275,
+      "velocity": -0.32219719599287344,
+      "activation_count": 60
+    },
+    "warm": {
+      "mass": 3.999999999999994,
+      "pitch": 1.4317254345614066,
+      "velocity": -0.19892090896209866,
+      "activation_count": 60
+    },
+    "in": {
+      "mass": 3.999999999999994,
+      "pitch": 1.0,
+      "velocity": 0.0,
+      "activation_count": 60
+    },
+    "here": {
+      "mass": 3.2499999999999964,
+      "pitch": 1.9556688863285645,
+      "velocity": 0.0901342871737154,
+      "activation_count": 45
+    },
+    "we": {
+      "mass": 5.4999999999999885,
+      "pitch": 1.3000547725055185,
+      "velocity": -0.2546321395818298,
+      "activation_count": 90
+    },
+    "need": {
+      "mass": 3.999999999999994,
+      "pitch": 2.9004872736516973,
+      "velocity": -0.6822167029514088,
+      "activation_count": 60
+    },
+    "less": {
+      "mass": 3.999999999999994,
+      "pitch": 2.6267627112356355,
+      "velocity": -0.6205785594360209,
+      "activation_count": 60
+    },
+    "heat": {
+      "mass": 3.2499999999999964,
+      "pitch": 3.858476070748151,
+      "velocity": 0.193203472740171,
+      "activation_count": 45
+    },
+    "disable": {
+      "mass": 5.4999999999999885,
+      "pitch": 2.01557489846778,
+      "velocity": -0.7533669154280346,
+      "activation_count": 90
+    },
+    "no": {
+      "mass": 6.999999999999983,
+      "pitch": 1.2225889411653297,
+      "velocity": 0.1657373488569222,
+      "activation_count": 120
+    },
+    "longer": {
+      "mass": 6.999999999999983,
+      "pitch": 1.5938554807481842,
+      "velocity": 0.41960902796424443,
+      "activation_count": 120
+    },
+    "needed": {
+      "mass": 5.4999999999999885,
+      "pitch": 2.32040333257704,
+      "velocity": -0.9371551535055691,
+      "activation_count": 90
+    },
+    "stop": {
+      "mass": 10.000000000000007,
+      "pitch": 2.3845450244615782,
+      "velocity": 0.4466387742312077,
+      "activation_count": 180
+    },
+    "furnace": {
+      "mass": 3.2499999999999964,
+      "pitch": 3.862741364866922,
+      "velocity": 0.23180316713065888,
+      "activation_count": 45
+    },
+    "thermostat": {
+      "mass": 3.999999999999994,
+      "pitch": 3.548075425493805,
+      "velocity": -0.9805980663945563,
+      "activation_count": 60
+    },
+    "cooling": {
+      "mass": 15.250000000000082,
+      "pitch": 2.324677082699224,
+      "velocity": -0.3862110018354828,
+      "activation_count": 285
+    },
+    "ac": {
+      "mass": 6.249999999999986,
+      "pitch": 1.1433218353103836,
+      "velocity": -0.0942274254418215,
+      "activation_count": 105
+    },
+    "currently": {
+      "mass": 3.999999999999994,
+      "pitch": 4.858836392438753,
+      "velocity": -1.326611094937155,
+      "activation_count": 60
+    },
+    "running": {
+      "mass": 3.2499999999999964,
+      "pitch": 6.704156259139987,
+      "velocity": 0.2706078623088798,
+      "activation_count": 45
+    },
+    "air": {
+      "mass": 6.999999999999983,
+      "pitch": 1.1506678244527382,
+      "velocity": 0.11939602585116199,
+      "activation_count": 120
+    },
+    "conditioner": {
+      "mass": 3.999999999999994,
+      "pitch": 1.2158627172807035,
+      "velocity": -0.09946045448104898,
+      "activation_count": 60
+    },
+    "off": {
+      "mass": 9.249999999999996,
+      "pitch": 1.975050066863867,
+      "velocity": 0.20692408242350746,
+      "activation_count": 165
+    },
+    "conditioning": {
+      "mass": 3.2499999999999964,
+      "pitch": 4.3363105139124345,
+      "velocity": 0.2382706163270284,
+      "activation_count": 45
+    },
+    "switch": {
+      "mass": 3.2499999999999964,
+      "pitch": 2.902807184419586,
+      "velocity": 0.10306918556645578,
+      "activation_count": 45
+    },
+    "cycle": {
+      "mass": 3.999999999999994,
+      "pitch": 3.0006263006616845,
+      "velocity": -0.8573217793637812,
+      "activation_count": 60
+    },
+    "should": {
+      "mass": 3.999999999999994,
+      "pitch": 3.174211836067758,
+      "velocity": -0.7438548464667961,
+      "activation_count": 60
+    },
+    "have": {
+      "mass": 3.999999999999994,
+      "pitch": 1.0,
+      "velocity": 0.0,
+      "activation_count": 60
+    },
+    "cooled": {
+      "mass": 3.999999999999994,
+      "pitch": 1.489587279696764,
+      "velocity": -0.16109859799643675,
+      "activation_count": 60
+    },
+    "enough": {
+      "mass": 6.249999999999986,
+      "pitch": 1.146282807787781,
+      "velocity": -0.08379951158863805,
+      "activation_count": 105
+    },
+    "now": {
+      "mass": 3.2499999999999964,
+      "pitch": 1.4778344431642823,
+      "velocity": 0.045067143586857934,
+      "activation_count": 45
+    }
+  },
+  "co_occurrence_weights": {
+    "the->action:heat_on": 150.0,
+    "room->action:heat_on": 90.0,
+    "is->action:heat_on": 120.0,
+    "cold->action:heat_on": 150.0,
+    "the->room": 210.0,
+    "room->is": 60.0,
+    "is->cold": 60.0,
+    "feels->action:heat_on": 30.0,
+    "room->feels": 30.0,
+    "feels->cold": 30.0,
+    "it->action:heat_on": 30.0,
+    "inside->action:heat_on": 60.0,
+    "it->is": 60.0,
+    "cold->inside": 30.0,
+    "temperature->action:heat_on": 60.0,
+    "low->action:heat_on": 120.0,
+    "the->temperature": 30.0,
+    "temperature->is": 60.0,
+    "is->low": 30.0,
+    "indoor->action:heat_on": 30.0,
+    "too->action:heat_on": 30.0,
+    "indoor->temperature": 30.0,
+    "is->too": 30.0,
+    "too->low": 30.0,
+    "needs->action:heat_on": 30.0,
+    "heating->action:heat_on": 120.0,
+    "room->needs": 30.0,
+    "needs->heating": 30.0,
+    "turn->action:heat_on": 30.0,
+    "heater->action:heat_on": 30.0,
+    "on->action:heat_on": 60.0,
+    "turn->the": 60.0,
+    "the->heater": 30.0,
+    "heater->on": 30.0,
+    "start->action:heat_on": 30.0,
+    "start->heating": 30.0,
+    "make->action:cool_on": 30.0,
+    "the->action:cool_on": 90.0,
+    "room->action:cool_on": 90.0,
+    "cooler->action:cool_on": 60.0,
+    "make->the": 30.0,
+    "room->cooler": 30.0,
+    "cool->action:cool_on": 30.0,
+    "cool->the": 30.0,
+    "house->action:cool_on": 30.0,
+    "is->action:cool_on": 60.0,
+    "getting->action:cool_on": 30.0,
+    "too->action:cool_on": 60.0,
+    "hot->action:cool_on": 60.0,
+    "the->house": 30.0,
+    "house->is": 30.0,
+    "is->getting": 30.0,
+    "getting->too": 30.0,
+    "too->hot": 30.0,
+    "temperature->action:cool_on": 30.0,
+    "increased->action:cool_on": 30.0,
+    "much->action:cool_on": 60.0,
+    "temperature->increased": 30.0,
+    "increased->too": 30.0,
+    "too->much": 30.0,
+    "it->action:cool_on": 30.0,
+    "very->action:cool_on": 30.0,
+    "warm->action:cool_on": 30.0,
+    "in->action:cool_on": 30.0,
+    "here->action:cool_on": 60.0,
+    "is->very": 30.0,
+    "very->warm": 30.0,
+    "warm->in": 30.0,
+    "in->here": 30.0,
+    "we->action:cool_on": 30.0,
+    "need->action:cool_on": 30.0,
+    "less->action:cool_on": 30.0,
+    "heat->action:cool_on": 60.0,
+    "we->need": 30.0,
+    "need->less": 30.0,
+    "less->heat": 30.0,
+    "disable->action:heat_off": 30.0,
+    "heating->action:heat_off": 90.0,
+    "disable->heating": 30.0,
+    "is->action:heat_off": 30.0,
+    "no->action:heat_off": 30.0,
+    "longer->action:heat_off": 30.0,
+    "needed->action:heat_off": 60.0,
+    "heating->is": 30.0,
+    "is->no": 60.0,
+    "no->longer": 60.0,
+    "longer->needed": 60.0,
+    "stop->action:heat_off": 30.0,
+    "the->action:heat_off": 30.0,
+    "furnace->action:heat_off": 60.0,
+    "stop->the": 60.0,
+    "the->furnace": 30.0,
+    "the->state:cooling": 60.0,
+    "thermostat->state:cooling": 30.0,
+    "is->state:cooling": 60.0,
+    "cooling->state:cooling": 60.0,
+    "the->thermostat": 30.0,
+    "thermostat->is": 30.0,
+    "is->cooling": 30.0,
+    "ac->state:cooling": 30.0,
+    "currently->state:cooling": 30.0,
+    "running->state:cooling": 60.0,
+    "the->ac": 60.0,
+    "ac->is": 30.0,
+    "is->currently": 30.0,
+    "currently->running": 30.0,
+    "stop->action:cool_off": 120.0,
+    "cooling->action:cool_off": 240.0,
+    "stop->cooling": 30.0,
+    "turn->action:cool_off": 60.0,
+    "the->action:cool_off": 210.0,
+    "air->action:cool_off": 60.0,
+    "conditioner->action:cool_off": 30.0,
+    "off->action:cool_off": 120.0,
+    "the->air": 60.0,
+    "air->conditioner": 30.0,
+    "conditioner->off": 30.0,
+    "disable->action:cool_off": 30.0,
+    "disable->cooling": 30.0,
+    "is->action:cool_off": 60.0,
+    "no->action:cool_off": 30.0,
+    "longer->action:cool_off": 30.0,
+    "needed->action:cool_off": 60.0,
+    "cooling->is": 30.0,
+    "conditioning->action:cool_off": 60.0,
+    "air->conditioning": 30.0,
+    "switch->action:cool_off": 30.0,
+    "switch->off": 30.0,
+    "off->the": 60.0,
+    "the->cooling": 60.0,
+    "cycle->action:cool_off": 30.0,
+    "should->action:cool_off": 30.0,
+    "cooling->cycle": 30.0,
+    "cycle->should": 30.0,
+    "should->stop": 30.0,
+    "ac->action:cool_off": 60.0,
+    "turn->off": 30.0,
+    "we->action:cool_off": 30.0,
+    "have->action:cool_off": 30.0,
+    "cooled->action:cool_off": 30.0,
+    "room->action:cool_off": 60.0,
+    "enough->action:cool_off": 90.0,
+    "we->have": 30.0,
+    "have->cooled": 30.0,
+    "cooled->the": 30.0,
+    "room->enough": 30.0,
+    "cool->action:cool_off": 30.0,
+    "now->action:cool_off": 60.0,
+    "is->cool": 30.0,
+    "cool->enough": 30.0,
+    "enough->now": 30.0
+  },
+  "known_targets": [
+    "action:heat_off",
+    "state:cooling",
+    "action:cool_off",
+    "action:heat_on",
+    "action:cool_on"
+  ],
+  "version": "1.0.0"
+}

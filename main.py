@@ -17,28 +17,30 @@ from helibit import HeliBitEngine, HeliBitTrainer
 
 class HeliBitChatGUI:
     """
-    Tkinter Graphical User Interface for interactive HeliBit-AI model inference.
+    Tkinter Graphical User Interface for interactive HeliBit-AI v2 model inference.
     """
 
     def __init__(self, root: tk.Tk):
         self.root = root
-        self.root.title("HeliBit-AI: Neuromorphic Computing Engine")
-        self.root.geometry("750x600")
-        self.root.minsize(650, 500)
-        
+        self.root.title("HeliBit-AI v2: Compositional Neuromorphic Engine")
+        self.root.geometry("800x640")
+        self.root.minsize(680, 520)
+
         # Color Palette (Dark Theme)
         self.BG_DARK = "#1E1E2E"
         self.CARD_BG = "#181825"
         self.INPUT_BG = "#313244"
         self.TEXT_COLOR = "#CDD6F4"
         self.ACCENT_BLUE = "#89B4FA"
+        self.ACCENT_GREEN = "#A6E3A1"
+        self.ACCENT_RED = "#F38BA8"
 
         self.root.configure(bg=self.BG_DARK)
 
-        # Initialize Universal HeliBit-AI Engine
+        # Initialize HeliBit-AI Engine
         self.engine = HeliBitEngine()
         self.trainer = HeliBitTrainer(self.engine)
-        
+
         checkpoint_file = "helibit_model.json"
         if os.path.exists(checkpoint_file):
             try:
@@ -56,7 +58,7 @@ class HeliBitChatGUI:
 
         title_lbl = tk.Label(
             header_frame,
-            text="HeliBit-AI: Neuromorphic Engine",
+            text="HeliBit-AI v2: Compositional Engine",
             font=("Segoe UI", 14, "bold"),
             bg=self.CARD_BG,
             fg=self.ACCENT_BLUE,
@@ -65,7 +67,7 @@ class HeliBitChatGUI:
 
         subtitle_lbl = tk.Label(
             header_frame,
-            text="Zero-FPU | 64-Bit Bitboard & Helical Trajectory Engine",
+            text="Structured Bitboard Roles | Zero-FPU Integer Math | Abstention Guard",
             font=("Segoe UI", 9),
             bg=self.CARD_BG,
             fg="#9399B2",
@@ -88,6 +90,7 @@ class HeliBitChatGUI:
 
         self.chat_display.tag_config("user_tag", foreground="#89B4FA", font=("Consolas", 10, "bold"))
         self.chat_display.tag_config("ai_tag", foreground="#A6E3A1", font=("Consolas", 10, "bold"))
+        self.chat_display.tag_config("ai_unknown_tag", foreground="#F38BA8", font=("Consolas", 10, "bold"))
         self.chat_display.tag_config("meta_tag", foreground="#9399B2", font=("Consolas", 9, "italic"))
         self.chat_display.tag_config("system_tag", foreground="#F9E2AF", font=("Consolas", 9))
 
@@ -123,7 +126,7 @@ class HeliBitChatGUI:
         )
         send_btn.pack(side=tk.RIGHT)
 
-        self.telemetry_var = tk.StringVar(value="Status: Ready | Enter natural language query prompt")
+        self.telemetry_var = tk.StringVar(value="Status: Ready | Enter natural language query prompt (e.g. 'quarter past five')")
         telemetry_bar = tk.Label(
             self.root,
             textvariable=self.telemetry_var,
@@ -140,9 +143,17 @@ class HeliBitChatGUI:
         """Displays initial greeting and prompt guidance."""
         welcome_txt = (
             "======================================================================\n"
-            " Welcome to HeliBit-AI Neuromorphic Desktop Application!\n"
-            " Powered by dataset.json multi-domain dataset and topological graph.\n\n"
-            " Type any query prompt to evaluate real-time inference latency and output.\n"
+            " Welcome to HeliBit-AI v2 Compositional Neuro-Symbolic Engine!\n"
+            " Features: Structured 64-bit Bitboard roles, zero-FPU arithmetic,\n"
+            "           unseen combination generalization, and explicit UNKNOWN abstention.\n\n"
+            " Try valid time expressions:\n"
+            "   - 'quarter past five'       -> 05:15\n"
+            "   - 'twenty-five to seven'    -> 06:35  (compositional generalization)\n"
+            "   - '14:30'                   -> 14:30\n"
+            "   - 'ten to midnight'         -> 23:50\n"
+            " Try adversarial inputs:\n"
+            "   - 'banana o'clock'          -> UNKNOWN (abstention guard)\n"
+            "   - 'the room is cold'        -> UNKNOWN\n"
             "======================================================================\n\n"
         )
         self.chat_display.config(state=tk.NORMAL)
@@ -162,18 +173,19 @@ class HeliBitChatGUI:
 
         result = self.engine.predict(user_text)
 
+        tag = "ai_unknown_tag" if result.is_unknown() else "ai_tag"
         ai_response = f"HeliBit-AI: Output -> {result.predicted_target}\n"
         meta_info = (
-            f"            [Latency: {result.latency_us:.2f} us | Bitboard Overlap: {result.bitboard_overlap_score} bits | Mean Dh: {result.mean_hamming_distance:.4f}]\n\n"
+            f"            [Confidence: {result.confidence:.2f} | Slots: {result.slots} | Latency: {result.latency_us:.1f} us | Overlap: {result.bitboard_overlap_score} bits]\n\n"
         )
 
-        self.chat_display.insert(tk.END, ai_response, "ai_tag")
+        self.chat_display.insert(tk.END, ai_response, tag)
         self.chat_display.insert(tk.END, meta_info, "meta_tag")
         self.chat_display.see(tk.END)
         self.chat_display.config(state=tk.DISABLED)
 
         self.telemetry_var.set(
-            f"Last Prediction: {result.predicted_target} | Latency: {result.latency_us:.2f} us | Overlap: {result.bitboard_overlap_score} bits | Mean Dh: {result.mean_hamming_distance:.4f}"
+            f"Last: {result.predicted_target} | Conf: {result.confidence:.2f} | Latency: {result.latency_us:.1f} us | Slots: {result.slots}"
         )
 
 
@@ -184,7 +196,7 @@ def launch_gui():
 
 
 def main():
-    parser = argparse.ArgumentParser(description="HeliBit-AI Main Application Entry Point")
+    parser = argparse.ArgumentParser(description="HeliBit-AI v2 Main Application Entry Point")
     parser.add_argument("--train", action="store_true", help="Retrain model on dataset.json")
     args = parser.parse_args()
 

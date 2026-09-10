@@ -1,6 +1,7 @@
 """
-HeliBit-AI Universal Training Script
-Trains HeliBitEngine on 'dataset.json', evaluates accuracy, and saves trained topological checkpoint.
+HeliBit-AI v2 Training Script
+Trains HeliBitEngine on 'dataset.json', evaluates seen and unseen splits,
+and saves trained topological checkpoint.
 """
 
 import sys
@@ -15,79 +16,94 @@ else:
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
 from helibit import HeliBitEngine, HeliBitTrainer
-from dataset import load_dataset_from_json
+from dataset import (
+    TRAINING_DATASET,
+    COMPOSITIONAL_TEST_DATASET,
+    ADVERSARIAL_TEST_DATASET,
+)
 
 
 def print_banner():
     banner = """
 ==============================================================================
-               HELIBIT-AI: UNIVERSAL LOCAL HEBBIAN TRAINING                  
-   No-Backpropagation Local Dynamical Adaptation & Checkpoint Persistence     
+                HELIBIT-AI v2: NEUROMORPHIC COMPOSITIONAL TRAINING             
+       Zero-FPU Arithmetic | Structured Bitboard Roles | Hebbian Dynamics     
 ==============================================================================
 """
     print(banner)
 
 
-def run_training(epochs: int = 15):
+def run_training(epochs: int = 5):
     print_banner()
-    
-    # Reload fresh dataset from dataset.json
-    dataset_data = load_dataset_from_json("dataset.json")
-    training_data = dataset_data["training"]
-    validation_data = dataset_data["validation"]
 
     engine = HeliBitEngine()
     engine.reset()
     trainer = HeliBitTrainer(engine)
-    
-    print(f"Loaded Training Dataset   : {len(training_data)} samples")
-    print(f"Loaded Validation Dataset : {len(validation_data)} samples\n")
-    
-    print(f"--- STARTING LOCAL HEBBIAN TRAINING ({epochs} EPOCHS) ---")
+
+    print(f"Loaded Training Dataset          : {len(TRAINING_DATASET)} samples")
+    print(f"Loaded Compositional Test Dataset: {len(COMPOSITIONAL_TEST_DATASET)} samples")
+    print(f"Loaded Adversarial Test Dataset  : {len(ADVERSARIAL_TEST_DATASET)} samples\n")
+
+    print(f"--- STARTING TRAINING ({epochs} EPOCHS) ---")
     print(f"{'Epoch':<8} | {'Accuracy (%)':<14} | {'Mean Resonance':<16} | {'Mean Hamming Dh':<18} | {'Elapsed (s)'}")
     print("-" * 75)
-    
+
     for epoch in range(1, epochs + 1):
-        stats = trainer.train_epoch(training_data)
+        stats = trainer.train_epoch(TRAINING_DATASET)
         print(
             f"Epoch {epoch:<3} | {stats['accuracy']:<14.2f} | "
             f"{stats['mean_resonance_force']:<16.4f} | {stats['mean_hamming_distance']:<18.4f} | "
             f"{stats['elapsed_sec']:<8.4f}"
         )
-        
+
     checkpoint_file = "helibit_model.json"
     saved_path = trainer.save_checkpoint(checkpoint_file)
     print(f"\nSaved trained topological checkpoint to: '{saved_path}'")
-    
-    # Validation Evaluation
-    if validation_data:
-        print("\n--- EVALUATING VALIDATION DATASET (UNSEEN PROMPTS FROM dataset.json) ---")
-        print(f"{'Input Prompt':<35} | {'Target':<22} | {'Predicted':<22} | {'Status'}")
-        print("-" * 90)
-        
-        val_correct = 0
-        candidate_targets = list(engine.known_targets)
-        for text, target in validation_data:
-            res = engine.predict(text, candidate_targets=candidate_targets)
-            status = "PASS" if res.predicted_target == target else "FAIL"
-            if status == "PASS":
-                val_correct += 1
-            print(f"{text:<35} | {target:<22} | {res.predicted_target:<22} | {status}")
-            
-        val_acc = (val_correct / len(validation_data)) * 100.0
-        print("-" * 90)
-        print(f"Validation Accuracy: {val_acc:.2f}% ({val_correct}/{len(validation_data)})")
-    
-    # Reload Verification
+
+    # Evaluate Compositional Generalization
+    print("\n--- EVALUATING UNSEEN COMPOSITIONAL GENERALIZATION ---")
+    print(f"{'Input Expression':<28} | {'Expected':<10} | {'Predicted':<10} | {'Status'}")
+    print("-" * 65)
+
+    comp_correct = 0
+    for text, expected in COMPOSITIONAL_TEST_DATASET:
+        res = engine.predict(text)
+        status = "PASS" if res.predicted_target == expected else "FAIL"
+        if status == "PASS":
+            comp_correct += 1
+        print(f"{text:<28} | {expected:<10} | {res.predicted_target:<10} | {status}")
+
+    comp_acc = (comp_correct / len(COMPOSITIONAL_TEST_DATASET)) * 100.0
+    print("-" * 65)
+    print(f"Compositional Generalization Accuracy: {comp_acc:.2f}% ({comp_correct}/{len(COMPOSITIONAL_TEST_DATASET)})")
+
+    # Evaluate Adversarial Rejection
+    print("\n--- EVALUATING ADVERSARIAL REJECTION (ABSTENTION GUARD) ---")
+    print(f"{'Input Query':<28} | {'Expected':<10} | {'Predicted':<10} | {'Status'}")
+    print("-" * 65)
+
+    adv_correct = 0
+    for text, expected in ADVERSARIAL_TEST_DATASET:
+        res = engine.predict(text)
+        status = "PASS" if res.predicted_target == expected else "FAIL"
+        if status == "PASS":
+            adv_correct += 1
+        print(f"{text:<28} | {expected:<10} | {res.predicted_target:<10} | {status}")
+
+    adv_acc = (adv_correct / len(ADVERSARIAL_TEST_DATASET)) * 100.0
+    print("-" * 65)
+    print(f"Adversarial Rejection Accuracy: {adv_acc:.2f}% ({adv_correct}/{len(ADVERSARIAL_TEST_DATASET)})")
+
+    # Checkpoint Reload Verification
     print("\n--- CHECKPOINT RELOAD VERIFICATION ---")
     new_engine = HeliBitEngine()
     new_trainer = HeliBitTrainer(new_engine)
     new_trainer.load_checkpoint(checkpoint_file)
-    print(f"Successfully reloaded checkpoint with {len(new_engine.token_states)} token states and {len(new_engine.known_targets)} target classes.")
+    print(f"Successfully reloaded checkpoint with {len(new_engine.token_states)} token states and {len(new_engine.role_prototypes)} role prototypes.")
     print("\n==============================================================================")
     print("                    TRAINING & VALIDATION COMPLETE                            ")
     print("==============================================================================\n")
 
 
 if __name__ == "__main__":
-    run_training(epochs=15)
+    run_training(epochs=5)

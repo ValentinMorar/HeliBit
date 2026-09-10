@@ -1,7 +1,7 @@
 """
 HeliBit-AI: Topological Bitboard Module
-Implements 64-bit cellular bitboard representations, bitwise operators, 
-and distance metrics as specified in the HeliBit-AI architecture.
+Implements 64-bit cellular bitboard representations, structured role/value bitfields,
+bitwise operators, and distance metrics as specified in the HeliBit-AI v2 architecture.
 """
 
 from typing import Union
@@ -10,14 +10,59 @@ from typing import Union
 class Bitboard64:
     """
     Represents an 8x8 boolean matrix (64-bit cellular bitboard) as a single uint64 scalar.
-    Executes concept operations in native register instructions (AND, XOR, POPCNT).
+    In v2, the 64-bit scalar is structured into explicit semantic fields:
+      - Bits 63–60: ROLE (0=NUMBER, 1=UNIT_HOUR, 2=DIRECTION_PAST, 3=DIRECTION_TO,
+                          4=MODIFIER_QUARTER, 5=MODIFIER_HALF, 6=MERIDIEM_AM, 7=MERIDIEM_PM,
+                          8=UNKNOWN)
+      - Bits 59–54: VALUE (0–63 integer value, used when ROLE=NUMBER)
+      - Bits 53–0:  LEXICAL_FINGERPRINT (hash for POPCNT/Hamming resonance and disambiguation)
     """
 
     MASK_64 = 0xFFFFFFFFFFFFFFFF
+    ROLE_SHIFT = 60
+    ROLE_MASK = 0xF
+    VALUE_SHIFT = 54
+    VALUE_MASK = 0x3F
+    FINGERPRINT_MASK = (1 << 54) - 1
+
+    # Standard Role Codes
+    ROLE_NUMBER = 0
+    ROLE_HOUR_UNIT = 1
+    ROLE_PAST = 2
+    ROLE_TO = 3
+    ROLE_QUARTER = 4
+    ROLE_HALF = 5
+    ROLE_AM = 6
+    ROLE_PM = 7
+    ROLE_UNKNOWN = 8
 
     def __init__(self, value: int = 0):
         """Initialize a 64-bit bitboard with an integer scalar value."""
         self.value = value & self.MASK_64
+
+    @classmethod
+    def from_role_value(cls, role: int, value: int = 0, fingerprint: int = 0) -> "Bitboard64":
+        """
+        Creates a structured Bitboard64 encoding explicit role, numeric value, and lexical fingerprint.
+        """
+        encoded = (
+            ((role & cls.ROLE_MASK) << cls.ROLE_SHIFT)
+            | ((value & cls.VALUE_MASK) << cls.VALUE_SHIFT)
+            | (fingerprint & cls.FINGERPRINT_MASK)
+        )
+        return cls(encoded)
+
+    def role(self) -> int:
+        """Extracts the semantic ROLE field (bits 63–60)."""
+        return (self.value >> self.ROLE_SHIFT) & self.ROLE_MASK
+
+    def numeric_value(self) -> int:
+        """Extracts the numeric VALUE field (bits 59–54)."""
+        return (self.value >> self.VALUE_SHIFT) & self.VALUE_MASK
+
+    def fingerprint(self) -> int:
+        """Extracts the lexical fingerprint field (bits 53–0)."""
+        return self.value & self.FINGERPRINT_MASK
 
     @classmethod
     def from_pattern(cls, pattern: str) -> "Bitboard64":
@@ -99,4 +144,7 @@ class Bitboard64:
         return self.value == other.value
 
     def __repr__(self) -> str:
-        return f"Bitboard64(0x{self.value:016X}, bits={self.popcount()})"
+        return (
+            f"Bitboard64(0x{self.value:016X}, role={self.role()}, "
+            f"val={self.numeric_value()}, bits={self.popcount()})"
+        )

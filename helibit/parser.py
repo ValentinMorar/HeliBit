@@ -241,11 +241,25 @@ class TimeSlotParser:
                 hour = None
                 minute_offset = modifier_offset
 
-        # Validate extracted hour (0-23) and minute_offset (0-59)
-        if hour is not None and (hour < 0 or hour > 23):
-            hour = None
+        # Validate extracted hour for lexical expressions (strictly 1-12, or 0 for midnight)
+        is_lexical_midnight = (special_hour == 0)
+        if hour is not None:
+            if is_lexical_midnight and hour == 0:
+                pass
+            elif not (1 <= hour <= 12):
+                hour = None
+
         if minute_offset is not None and (minute_offset < 0 or minute_offset > 59):
             minute_offset = None
+
+        if hour is None:
+            return {
+                "hour": None,
+                "minute_offset": None,
+                "direction": None,
+                "meridiem": None,
+                "is_24h": False,
+            }
 
         return {
             "hour": hour,

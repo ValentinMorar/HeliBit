@@ -43,6 +43,7 @@
     {"input": "hello world", "target": "UNKNOWN"},
     {"input": "random query text", "target": "UNKNOWN"},
     {"input": "yesterday evening", "target": "UNKNOWN"},
-    {"input": "clock without hour", "target": "UNKNOWN"}
+    {"input": "clock without hour", "target": "UNKNOWN"},
+    {"input": "quarter to thirteen", "target": "UNKNOWN"}
   ]
 }

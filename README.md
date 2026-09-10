@@ -123,7 +123,7 @@ python train.py
 |---|---|---|---|
 | **(a) Seen Training Exact-Match** | 18 | **100.00%** | ~65 µs |
 | **(b) Unseen Compositional Generalization** | 12 | **100.00%** | ~73 µs |
-| **(c) Adversarial / Invalid Abstention** | 8 | **100.00%** | ~77 µs |
+| **(c) Adversarial / Invalid Abstention** | 9 | **100.00%** | ~77 µs |
 
 - **Execution Engine**: Pure Integer ALU / Bitwise SIMD logic (Zero FPU)
 - **Memory Footprint**: < 256 KB (L1/L2 Cache Resident)

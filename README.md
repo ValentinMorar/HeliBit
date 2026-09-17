@@ -3,7 +3,7 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-An ultra-efficient **Compositional Neuro-Symbolic Engine** based on **Structured 64-Bit Bitboard Roles**, **Pure Zero-FPU Integer Arithmetic**, and **Damped Helical Trajectories** for confidence estimation and abstention, as specified in [HELIBIT_ARCHITECTURE_V2.md](HELIBIT_ARCHITECTURE_V2.md).
+An ultra-efficient **Compositional Neuro-Symbolic Engine** based on **Structured 64-Bit Bitboard Roles**, **Pure Zero-FPU Integer Arithmetic**, and **Damped Helical Trajectories** for confidence estimation and abstention.
 
 HeliBit-AI v2 transitions from nearest-neighbor classification over memorized string labels to a **true compositional engine** capable of generalizing to unseen combinations with sub-100 µs execution latency (~70 µs).
 

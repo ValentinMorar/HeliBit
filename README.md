@@ -128,3 +128,8 @@ python train.py
 - **Execution Engine**: Pure Integer ALU / Bitwise SIMD logic (Zero FPU)
 - **Memory Footprint**: < 256 KB (L1/L2 Cache Resident)
 - **Average Inference Latency**: ~**70 µs (0.070 ms)** on standard CPU
+
+## Note
+This is the early stage for this AI model. You can help me develop it here: https://ko-fi.com/algorithmmaker
+How I intend to develop this model:
+I want this to be a small-scale AI, where every logical action is transformed into a "neuron." In this way, the AI ​​will function as a cluster of "neurons," allowing anyone to add or remove them for specific or general tasks. Do not expect rapid development; it will likely take a few years before I can deliver the first "multi-neuron" version. This also depends on your support.
